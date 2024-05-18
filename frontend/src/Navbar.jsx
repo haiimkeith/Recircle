@@ -17,10 +17,26 @@ function Navbar() {
 
   // JSON of all available categories
   const clothingCategories = {
-    Men: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Balls"],
-    Women: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Woman"],
-    Kids: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Kids"],
-    Unisex: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Uni"],
+    Men: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Accessories"],
+    Women: [
+      "Tops",
+      "Bottoms",
+      "Outerwear",
+      "Dresses & Skirts",
+      "Socks",
+      "Underwear",
+      "Woman",
+    ],
+    Kids: [
+      "Tops",
+      "Bottoms",
+      "Outerwear",
+      "Dresses",
+      "Socks",
+      "Underwear",
+      "Kids",
+    ],
+    Unisex: ["Tops", "Bottoms", "Outerwear", "Socks", "Accessories"],
   };
 
   return (
