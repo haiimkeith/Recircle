@@ -1,3 +1,9 @@
+body, html, #root {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   display: flex;
   justify-content: center;
@@ -8,4 +14,67 @@ h1 {
   font-family: "Poetsen One", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.navigate {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.poetsen-one-regular, .navigate, .Navbar {
+  background-color: transparent;
+}
+
+.scroll {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: 0;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.scrollPortion {
+  scroll-snap-align: start;
+  transition: scroll-snap-align 5s ease;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gallery-container {
+  position: relative;
+}
+
+.about, .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutText {
+  z-index: 1;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: transparent;
+  color:white;
+  padding: 5%;
+  border-radius: 50px;
+  font-size: 30px;
+}
+
+.footerText {
+  font-size: 35px;
+  padding: 5%;
+  border-radius: 50px;
+  text-align: center;
 }

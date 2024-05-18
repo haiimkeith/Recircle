@@ -1,6 +1,11 @@
+.navigation-container {
+  background-color: transparent;
+}
+
 .navigation {
   display: flex;
   justify-content: center;
+  background-color: transparent;
 }
 
 .navigation a {
@@ -9,6 +14,7 @@
   margin: 5px 20px;
   text-decoration: none;
   transition: color 0.5s ease;
+  background-color: transparent;
 }
 
 .navigation a.active {
@@ -25,6 +31,10 @@
   transition: opacity 0.3s ease;
 }
 
+ul, li {
+  background-color: transparent;
+}
+
 .cloth-category-section ul {
   list-style-type: none;
   display: flex;
@@ -39,9 +49,11 @@
 }
 
 .cloth-category-section.fade-in {
+  background-color: transparent;
   opacity: 1;
 }
 
 .cloth-category-section.fade-out {
+  background-color: transparent;
   opacity: 0;
 }

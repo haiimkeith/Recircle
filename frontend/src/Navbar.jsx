@@ -40,7 +40,7 @@ function Navbar() {
   };
 
   return (
-    <div>
+    <div className="navigation-container">
       <div className="navigation">
         <a
           href="#"
