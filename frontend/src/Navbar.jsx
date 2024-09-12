@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ onCategoryChange }) {  // Accept a callback prop
   const [selectedNavLink, setSelectedNavLink] = useState(null);
   const [fadeClass, setFadeClass] = useState("");
 
@@ -11,11 +11,19 @@ function Navbar() {
       setTimeout(() => {
         setSelectedNavLink(link);
         setFadeClass("fade-in");
+        onCategoryChange(link, ""); // Pass the main category and reset sub-category
       }, 300);
     }
   };
 
-  // JSON of all available categories
+  const handleSubCategoryClick = (subCategory) => {
+    setFadeClass("fade-out");
+    setTimeout(() => {
+      setFadeClass("fade-in");
+      onCategoryChange(selectedNavLink, subCategory);  // Pass selected category and sub-category
+    }, 300);
+  };
+
   const clothingCategories = {
     Men: ["Tops", "Bottoms", "Outerwear", "Socks", "Underwear", "Accessories"],
     Women: [
@@ -25,7 +33,7 @@ function Navbar() {
       "Dresses & Skirts",
       "Socks",
       "Underwear",
-      "Woman",
+      "Accessories",
     ],
     Kids: [
       "Tops",
@@ -34,7 +42,7 @@ function Navbar() {
       "Dresses",
       "Socks",
       "Underwear",
-      "Kids",
+      "Accessories",
     ],
     Unisex: ["Tops", "Bottoms", "Outerwear", "Socks", "Accessories"],
   };
@@ -42,42 +50,25 @@ function Navbar() {
   return (
     <div className="navigation-container">
       <div className="navigation">
-        <a
-          href="#"
-          className={selectedNavLink === "Men" ? "active" : "inactive"}
-          onClick={() => handleNavLinkClick("Men")}
-        >
-          MEN
-        </a>
-        <a
-          href="#"
-          className={selectedNavLink === "Women" ? "active" : "inactive"}
-          onClick={() => handleNavLinkClick("Women")}
-        >
-          WOMEN
-        </a>
-        <a
-          href="#"
-          className={selectedNavLink === "Kids" ? "active" : "inactive"}
-          onClick={() => handleNavLinkClick("Kids")}
-        >
-          KIDS
-        </a>
-        <a
-          href="#"
-          className={selectedNavLink === "Unisex" ? "active" : "inactive"}
-          onClick={() => handleNavLinkClick("Unisex")}
-        >
-          UNISEX
-        </a>
-        <a href="#"></a>
+        {Object.keys(clothingCategories).map((category) => (
+          <a
+            href="#"
+            key={category}
+            className={selectedNavLink === category ? "active" : "inactive"}
+            onClick={() => handleNavLinkClick(category)}
+          >
+            {category.toUpperCase()}
+          </a>
+        ))}
       </div>
 
       <div className={`cloth-category-section ${fadeClass}`}>
         {selectedNavLink && (
           <ul>
             {clothingCategories[selectedNavLink].map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index} onClick={() => handleSubCategoryClick(item)}>
+                {item}
+              </li>
             ))}
           </ul>
         )}
@@ -87,3 +78,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
